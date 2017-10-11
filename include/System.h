@@ -36,6 +36,10 @@
 #include "ORBVocabulary.h"
 #include "Viewer.h"
 
+#ifdef _MSC_VER
+void usleep(__int64 usec);
+#endif
+
 namespace ORB_SLAM2
 {
 

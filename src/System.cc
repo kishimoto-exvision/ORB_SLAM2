@@ -26,6 +26,15 @@
 #include <pangolin/pangolin.h>
 #include <iomanip>
 
+#ifdef _MSC_VER
+#include <chrono>
+#include <thread>
+void usleep(__int64 usec)
+{
+    std::this_thread::sleep_for(std::chrono::microseconds(usec));
+}
+#endif
+
 namespace ORB_SLAM2
 {
 

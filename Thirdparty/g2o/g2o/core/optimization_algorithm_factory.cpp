@@ -30,6 +30,10 @@
 #include <typeinfo>
 #include <cassert>
 
+#ifdef _MSC_VER
+#include <algorithm>
+#endif
+
 using namespace std;
 
 namespace g2o {

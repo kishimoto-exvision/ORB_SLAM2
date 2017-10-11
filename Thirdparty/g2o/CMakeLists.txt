@@ -53,13 +53,19 @@ IF(OPENMP_FOUND AND G2O_USE_OPENMP)
   MESSAGE(STATUS "Compiling with OpenMP support")
 ENDIF(OPENMP_FOUND AND G2O_USE_OPENMP)
 
-# Compiler specific options for gcc
-SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -march=native") 
-SET(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O3 -march=native") 
 
-# activate warnings !!!
-SET(g2o_C_FLAGS "${g2o_C_FLAGS} -Wall -W")
-SET(g2o_CXX_FLAGS "${g2o_CXX_FLAGS} -Wall -W")
+IF(WIN32)
+  SET(g2o_C_FLAGS "${g2o_C_FLAGS} -W3")
+  SET(g2o_CXX_FLAGS "${g2o_CXX_FLAGS} -W3")
+ELSE()
+  # Compiler specific options for gcc
+  SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -march=native") 
+  SET(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O3 -march=native") 
+
+  # activate warnings !!!
+  SET(g2o_C_FLAGS "${g2o_C_FLAGS} -Wall -W")
+  SET(g2o_CXX_FLAGS "${g2o_CXX_FLAGS} -Wall -W")
+ENDIF()
 
 # specifying compiler flags
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${g2o_CXX_FLAGS}")

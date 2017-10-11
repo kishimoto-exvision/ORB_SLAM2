@@ -271,10 +271,11 @@ void MapPoint::ComputeDistinctiveDescriptors()
 
     // Compute distances between them
     const size_t N = vDescriptors.size();
-
-    float Distances[N][N];
+    vector<vector<float>> Distances;
+    Distances.resize(N);
     for(size_t i=0;i<N;i++)
     {
+        Distances[i].resize(N);
         Distances[i][i]=0;
         for(size_t j=i+1;j<N;j++)
         {
@@ -289,7 +290,13 @@ void MapPoint::ComputeDistinctiveDescriptors()
     int BestIdx = 0;
     for(size_t i=0;i<N;i++)
     {
+#ifndef 0 && _MSC_VER
         vector<int> vDists(Distances[i],Distances[i]+N);
+#else
+        vector<float> vDists;
+        vDists.resize(N);
+
+#endif
         sort(vDists.begin(),vDists.end());
         int median = vDists[0.5*(N-1)];
 

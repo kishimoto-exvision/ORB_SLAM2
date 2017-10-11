@@ -1,8 +1,16 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.1)
 project(DBoW2)
 
+set(CMAKE_CXX_STANDARD 11)
+
+IF(WIN32)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -W3")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -W3 ")
+ELSE()
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall  -O3 -march=native ")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall  -O3 -march=native")
+ENDIF()
+
 
 set(HDRS_DBOW2
   DBoW2/BowVector.h
