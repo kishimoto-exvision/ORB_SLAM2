@@ -4,6 +4,7 @@ cd Pangolin
 mkdir build
 cd build
 cmake .. -G "Visual Studio 14 2015 Win64" ^
+-DMSVC_USE_STATIC_CRT:BOOL="OFF" ^
 -DCMAKE_CONFIGURATION_TYPES:STRING="Release"
 cmake --build "." --target "ALL_BUILD" --config "Release"
 cd ../..

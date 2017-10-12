@@ -23,3 +23,4 @@ build/
 lib/
 
 /Thirdparty/Pangolin
+/Thirdparty/g2o/bin/Release/g2o.lib
