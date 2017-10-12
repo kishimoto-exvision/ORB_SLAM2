@@ -249,7 +249,11 @@ namespace g2o {
         const typename SparseBlockMatrix<MatrixType>::SparseMatrixBlock* a=it->second;
         int destOffset = it->first ? _rowBlockIndices[it->first - 1] : 0;
         // destVec += *a * srcVec (according to the sub-vector parts)
+#ifndef _MSC_VER
         internal::axpy(*a, srcVec, srcOffset, destVec, destOffset);
+#else
+        internal::axpy_not_template(*a, srcVec, srcOffset, destVec, destOffset);
+#endif
       }
     }
   }
@@ -274,9 +278,17 @@ namespace g2o {
         if (destOffset > srcOffset) // only upper triangle
           break;
         // destVec += *a * srcVec (according to the sub-vector parts)
+#ifndef _MSC_VER
         internal::axpy(*a, srcVec, srcOffset, destVec, destOffset);
+#else
+        internal::axpy_not_template(*a, srcVec, srcOffset, destVec, destOffset);
+#endif
         if (destOffset < srcOffset)
-          internal::atxpy(*a, srcVec, destOffset, destVec, srcOffset);
+#ifndef _MSC_VER
+            internal::atxpy(*a, srcVec, destOffset, destVec, srcOffset);
+#else
+            internal::atxpy_not_template(*a, srcVec, destOffset, destVec, srcOffset);
+#endif
       }
     }
   }
@@ -305,7 +317,11 @@ namespace g2o {
         const typename SparseBlockMatrix<MatrixType>::SparseMatrixBlock* a=it->second;
         int srcOffset = rowBaseOfBlock(it->first);
         // destVec += *a.transpose() * srcVec (according to the sub-vector parts)
+#ifndef _MSC_VER
         internal::atxpy(*a, srcVec, srcOffset, destVec, destOffset);
+#else
+        internal::atxpy_not_template(*a, srcVec, srcOffset, destVec, destOffset);
+#endif
       }
     }
     

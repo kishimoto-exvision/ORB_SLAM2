@@ -59,6 +59,10 @@
 #include <opencv2/features2d/features2d.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <vector>
+#ifdef _MSC_VER
+#include <algorithm>
+#include <iterator>
+#endif
 
 #include "ORBextractor.h"
 

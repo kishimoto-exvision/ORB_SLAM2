@@ -47,10 +47,12 @@ namespace g2o {
 #ifndef _MSC_VER
     template<>
     inline void axpy(const Eigen::MatrixXd& A, const Eigen::Map<const Eigen::VectorXd>& x, int xoff, Eigen::Map<Eigen::VectorXd>& y, int yoff)
+#else
+    inline void axpy_not_template(const Eigen::MatrixXd& A, const Eigen::Map<const Eigen::VectorXd>& x, int xoff, Eigen::Map<Eigen::VectorXd>& y, int yoff)
+#endif
     {
       y.segment(yoff, A.rows()) += A * x.segment(xoff, A.cols());
     }
-#endif
 
     template<typename MatrixType>
     inline void atxpy(const MatrixType& A, const Eigen::Map<const Eigen::VectorXd>& x, int xoff, Eigen::Map<Eigen::VectorXd>& y, int yoff)
@@ -67,10 +69,12 @@ namespace g2o {
 #ifndef _MSC_VER
     template<>
     inline void atxpy(const Eigen::MatrixXd& A, const Eigen::Map<const Eigen::VectorXd>& x, int xoff, Eigen::Map<Eigen::VectorXd>& y, int yoff)
+#else
+    inline void atxpy_not_template(const Eigen::MatrixXd& A, const Eigen::Map<const Eigen::VectorXd>& x, int xoff, Eigen::Map<Eigen::VectorXd>& y, int yoff)
+#endif
     {
       y.segment(yoff, A.cols()) += A.transpose() * x.segment(xoff, A.rows());
     }
-#endif
 
   } // end namespace internal
 } // end namespace g2o

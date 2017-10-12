@@ -122,7 +122,11 @@ namespace g2o {
             const SparseMatrixBlock* a = it->block;
             int srcOffset = rowBaseOfBlock(it->row);
             // destVec += *a.transpose() * srcVec (according to the sub-vector parts)
+#ifndef _MSC_VER
             internal::atxpy(*a, srcVec, srcOffset, destVec, destOffset);
+#else
+            internal::atxpy_not_template(*a, srcVec, srcOffset, destVec, destOffset);
+#endif
           }
         }
       }

@@ -290,13 +290,8 @@ void MapPoint::ComputeDistinctiveDescriptors()
     int BestIdx = 0;
     for(size_t i=0;i<N;i++)
     {
-#ifndef 0 && _MSC_VER
-        vector<int> vDists(Distances[i],Distances[i]+N);
-#else
-        vector<float> vDists;
-        vDists.resize(N);
+        vector<int> vDists(&Distances[i][0], &Distances[i][0] + N);
 
-#endif
         sort(vDists.begin(),vDists.end());
         int median = vDists[0.5*(N-1)];
 

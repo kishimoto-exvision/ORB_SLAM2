@@ -94,7 +94,11 @@ namespace g2o {
           int srcOffset = destOffset;
           const SparseMatrixBlock& A = _diagonal[i];
           // destVec += *A.transpose() * srcVec (according to the sub-vector parts)
+#ifndef _MSC_VER
           internal::axpy(A, srcVec, srcOffset, destVec, destOffset);
+#else
+          internal::axpy_not_template(A, srcVec, srcOffset, destVec, destOffset);
+#endif
         }
       }
 
