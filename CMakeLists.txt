@@ -68,8 +68,8 @@ target_link_libraries(${PROJECT_NAME}
 ${OpenCV_LIBS}
 ${EIGEN3_LIBS}
 ${Pangolin_LIBRARIES}
-${PROJECT_SOURCE_DIR}/Thirdparty/DBoW2/lib/libDBoW2.dll
-${PROJECT_SOURCE_DIR}/Thirdparty/g2o/build/Release/g2o.dll
+${PROJECT_SOURCE_DIR}/Thirdparty/DBoW2/lib/Release/DBoW2.lib
+${PROJECT_SOURCE_DIR}/Thirdparty/g2o/bin/Release/g2o.lib
 )
 ELSE()
 target_link_libraries(${PROJECT_NAME}

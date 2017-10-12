@@ -3,13 +3,13 @@ project(DBoW2)
 
 set(CMAKE_CXX_STANDARD 11)
 
-IF(WIN32)
+if(WIN32)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -W3")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -W3 ")
-ELSE()
+else()
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall  -O3 -march=native ")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall  -O3 -march=native")
-ENDIF()
+endif()
 
 
 set(HDRS_DBOW2
@@ -43,6 +43,10 @@ endif()
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 include_directories(${OpenCV_INCLUDE_DIRS})
-add_library(DBoW2 SHARED ${SRCS_DBOW2} ${SRCS_DUTILS})
+if(WIN32)
+  add_library(DBoW2 STATIC ${SRCS_DBOW2} ${SRCS_DUTILS})
+else()
+  add_library(DBoW2 SHARED ${SRCS_DBOW2} ${SRCS_DUTILS})
+endif()
 target_link_libraries(DBoW2 ${OpenCV_LIBS})
 

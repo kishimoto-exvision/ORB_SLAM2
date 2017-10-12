@@ -10,18 +10,17 @@ cd ../..
 
 
 echo "Configuring and building Thirdparty/DBoW2 ..."
-
 cd Thirdparty/DBoW2
 mkdir build
 cd build
 cmake .. -G "Visual Studio 14 2015 Win64" ^
 -DCMAKE_CONFIGURATION_TYPES:STRING="Release"
 cmake --build "." --target "ALL_BUILD" --config "Release"
+cd ../..
 
-cd ../../g2o
 
 echo "Configuring and building Thirdparty/g2o ..."
-
+cd Thirdparty/g2o
 mkdir build
 cd build
 cmake .. -G "Visual Studio 14 2015 Win64" ^
@@ -29,15 +28,15 @@ cmake .. -G "Visual Studio 14 2015 Win64" ^
 -DG2O_USE_OPENMP:BOOL="ON" ^
 -DCMAKE_CONFIGURATION_TYPES:STRING="Release"
 cmake --build "." --target "ALL_BUILD" --config "Release"
+cd ../..
 
-cd ../../../
 
 echo "Uncompress vocabulary ..."
-
 cd Vocabulary
 REM Extract the archive with your tool.
 REM tar -xf ORBvoc.txt.tar.gz
 cd ..
+
 
 echo "Configuring and building ORB_SLAM2 ..."
 
