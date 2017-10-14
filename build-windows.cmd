@@ -5,8 +5,9 @@ mkdir build
 cd build
 cmake .. -G "Visual Studio 14 2015 Win64" ^
 -DMSVC_USE_STATIC_CRT:BOOL="OFF" ^
--DCMAKE_CONFIGURATION_TYPES:STRING="Release"
+-DCMAKE_CONFIGURATION_TYPES:STRING="Release;RelWithDebInfo"
 cmake --build "." --target "ALL_BUILD" --config "Release"
+cmake --build "." --target "ALL_BUILD" --config "RelWithDebInfo"
 cd ../..
 
 
@@ -15,8 +16,9 @@ cd Thirdparty/DBoW2
 mkdir build
 cd build
 cmake .. -G "Visual Studio 14 2015 Win64" ^
--DCMAKE_CONFIGURATION_TYPES:STRING="Release"
+-DCMAKE_CONFIGURATION_TYPES:STRING="Release;RelWithDebInfo"
 cmake --build "." --target "ALL_BUILD" --config "Release"
+cmake --build "." --target "ALL_BUILD" --config "RelWithDebInfo"
 cd ../..
 
 
@@ -27,8 +29,9 @@ cd build
 cmake .. -G "Visual Studio 14 2015 Win64" ^
 -DEIGEN3_INCLUDE_DIR:PATH="C:/SDKs/eigen/eigen3/include/eigen3" ^
 -DG2O_USE_OPENMP:BOOL="ON" ^
--DCMAKE_CONFIGURATION_TYPES:STRING="Release"
+-DCMAKE_CONFIGURATION_TYPES:STRING="Release;RelWithDebInfo"
 cmake --build "." --target "ALL_BUILD" --config "Release"
+cmake --build "." --target "ALL_BUILD" --config "RelWithDebInfo"
 cd ../..
 
 
@@ -45,6 +48,7 @@ mkdir build
 cd build
 cmake .. -G "Visual Studio 14 2015 Win64" ^
 -DEIGEN3_INCLUDE_DIR:PATH="C:/SDKs/eigen/eigen3/include/eigen3" ^
--DCMAKE_CONFIGURATION_TYPES:STRING="Release"
+-DCMAKE_CONFIGURATION_TYPES:STRING="Release;RelWithDebInfo"
 cmake --build "." --target "ALL_BUILD" --config "Release"
+cmake --build "." --target "ALL_BUILD" --config "RelWithDebInfo"
 
